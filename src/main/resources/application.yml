@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    url: "jdbc:mysql://localhost:3306/test_task_schema"
+    password: "root"
+    username: "root"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
