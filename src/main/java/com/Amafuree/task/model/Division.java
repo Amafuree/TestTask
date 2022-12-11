@@ -1,7 +1,10 @@
 package com.Amafuree.task.model;
 
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,7 +13,6 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Setter
 @Getter
 @EqualsAndHashCode
@@ -42,7 +44,7 @@ public class Division {
     private Boolean isSystem = Boolean.FALSE;
 
     @Column(name = "creation_date")
-    private LocalDateTime created;
+    private LocalDateTime created = LocalDateTime.now();
 
     @Column(name = "correction_date")
     private LocalDateTime edited;
@@ -51,7 +53,6 @@ public class Division {
         this.name = name;
         this.dateFrom = dateFrom;
         this.dateTill = dateTill;
-        this.created = LocalDateTime.now();
     }
 
     public Division getParentDivision() {
@@ -66,14 +67,17 @@ public class Division {
     @Override
     public String toString() {
         return "Division: " + this.name +
-                "\n\t-Id: " + this.id.toString() +
+                "\n\t-Id: " + (this.id == null ? "null" : this.id.toString()) +
                 "\n\t-Parent:" + (this.parentDivision == null
                 ? "absent" : this.parentDivision.getName()) +
-                "\n\t-Child amount: " + getChildDivisions().size() +
+                "\n\t-Child amount: " + (childDivisions.isEmpty() ?
+                0 : childDivisions.size()) +
                 "\n\t-Date from: " + this.dateFrom.toString() +
-                "\n\t-Date till: " + this.dateTill.toString() +
+                "\n\t-Date till: " + (this.dateTill == null ?
+                "not specified" : this.dateTill.toString()) +
                 "\n\t-Created: " + this.created.toString() +
-                "\n\t-Last modified: " + this.edited.toString() +
+                "\n\t-Last modified: " + (this.edited == null ? "Not modified"
+                : this.edited.toString()) +
                 "\n\t-Is system: " + this.isSystem.toString();
     }
 

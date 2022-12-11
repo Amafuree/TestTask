@@ -4,9 +4,13 @@ import com.Amafuree.task.model.Division;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface DivisionService {
 
+    Optional<Division> getDivisionById(Long id);
+
+    Optional<Division> getDivisionByName(String name);
     List<Division> getDivisions();
 
     List<Division> getEagerLoadedDivisions();
@@ -19,5 +23,5 @@ public interface DivisionService {
 
     void removeDivisionById(Long id);
 
-    void removeDivisionByName(String divisionName);
+    void correctDivision(Division division);
 }
