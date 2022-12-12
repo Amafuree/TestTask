@@ -14,22 +14,11 @@ public class DivisionDto {
 
     private Long id;
     private String name;
-    //private DivisionDto parentDivision;
-    //private List<DivisionDto> childDivisions;
     private LocalDateTime dateFrom;
     private LocalDateTime dateTill;
     private Boolean isSystem;
     private LocalDateTime created;
     private LocalDateTime edited;
-
-//    public DivisionDto getParentDivision() {
-//        return parentDivision == null ? null : parentDivision;
-//    }
-
-//    public List<DivisionDto> getChildDivisions() {
-//        return childDivisions == null || childDivisions.size() == 0 ?
-//                Collections.emptyList() : childDivisions;
-//    }
 
     @Override
     public String toString() {

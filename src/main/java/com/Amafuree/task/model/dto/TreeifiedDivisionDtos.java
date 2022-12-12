@@ -9,22 +9,31 @@ import java.util.stream.Collectors;
 
 public final class TreeifiedDivisionDtos implements Serializable {
 
+    static final long serialVersionUID = 1L;
     private Member rootElement;
+    private final List<Division> passedList;
+    private final int size;
 
     public TreeifiedDivisionDtos(List<Division> divisionList) {
+        this.passedList = divisionList;
         for (Division division : divisionList) {
             if (division.getParentDivision() == null) {
                 rootElement = new Member(division);
                 break;
             }
         }
+        this.size = divisionList.size();
     }
 
     public String getHierarchicName(String name) {
         return rootElement.seekForDivision(name);
     }
 
-    private static class Member {
+    public int size() {
+        return this.size;
+    }
+
+    private class Member {
 
         private final DivisionDto storedDivision;
         private final String name;
@@ -39,6 +48,7 @@ public final class TreeifiedDivisionDtos implements Serializable {
 
         private List<Member> treeifyList(List<Division> divisionList) {
             return divisionList.stream()
+                    .filter(passedList::contains)
                     .map(Member::new)
                     .map(member -> setParent(member, storedDivision))
                     .collect(Collectors.toList());
@@ -54,14 +64,14 @@ public final class TreeifiedDivisionDtos implements Serializable {
             if (!name.equals(this.name)) {
                 for (Member member : children) {
                     seekResult = member.seekForDivision(name);
-                    if (seekResult.equals(name)) {
+                    if (seekResult.contains(name)) {
                         break;
                     }
                 }
             } else {
                 return this.name;
             }
-            return seekResult.equals("") || seekResult.contains("Not found!") ?
+            return (seekResult.equals("") || seekResult.contains("Not found!")) ?
                     "Not found!" : this.name + "/" + seekResult;
         }
     }
