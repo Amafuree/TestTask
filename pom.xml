@@ -9,9 +9,9 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.Amafuree</groupId>
-	<artifactId>test-task-Pulkovo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>test-task-Pulkovo</name>
+	<artifactId>test</artifactId>
+<!--	<version>1</version> -->
+	<name>test</name>
 	<description>Test task for apply</description>
 	<properties>
 		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>

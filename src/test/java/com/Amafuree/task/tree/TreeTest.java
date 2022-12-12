@@ -35,7 +35,7 @@ public class TreeTest {
                 HEAD/subHead_1/sub_1_child
                 HEAD/subHead_2/sub_2_child_1
                 HEAD/subHead_2/sub_2_child_2
-                Not found!""";
+                HEAD/subHead_2/sub_2_child_1/child_1_child""";
 
         String hierarchicNames = tree.getHierarchicName("HEAD") + "\n"
                 + tree.getHierarchicName("subHead_1") + "\n"

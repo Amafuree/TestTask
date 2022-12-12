@@ -5,12 +5,14 @@ spring:
     show-sql: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
   datasource:
-    url: jdbc:mysql://localhost:3306/test_task_schema
+    url: jdbc:mysql://172.17.0.2:3306/test_task_schema
     password: root
     username: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   sql:
     init:
       mode: always
-
+  flyway:
+    schemas: test_task_schema
+    create-schemas: true
 
