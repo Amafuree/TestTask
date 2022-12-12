@@ -52,13 +52,6 @@ public class DivisionServiceImpl implements DivisionService {
     @Override
     @Transactional(readOnly = true)
     @Lock(LockModeType.PESSIMISTIC_READ)
-    public List<Division> getDivisions() {
-        return divisionRepository.findAll();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    @Lock(LockModeType.PESSIMISTIC_READ)
     public List<Division> getEagerLoadedDivisions() {
         return divisionRepository.getEagerLoadedDivisions();
     }

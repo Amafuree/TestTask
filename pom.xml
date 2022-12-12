@@ -42,12 +42,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.31</version>
 		</dependency>
-<!--		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>${org.mapstruct.version}</version>
-		</dependency>
-		-->
 	</dependencies>
 
 	<build>
@@ -77,12 +71,6 @@
 							<artifactId>lombok</artifactId>
 							<version>1.18.24</version>
 						</path>
-<!--						<path>
-							<groupId>org.mapstruct</groupId>
-							<artifactId>mapstruct-processor</artifactId>
-							<version>${org.mapstruct.version}</version>
-						</path>
-						-->
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>

@@ -11,7 +11,7 @@ public final class TreeifiedDivisionDtos implements Serializable {
 
     static final long serialVersionUID = 1L;
     private Member rootElement;
-    private List<Division> passedList;
+    private final List<Division> passedList;
     private final int size;
 
     public TreeifiedDivisionDtos(List<Division> divisionList) {
@@ -33,10 +33,6 @@ public final class TreeifiedDivisionDtos implements Serializable {
         return this.size;
     }
 
-    public List<Division> getPassedList() {
-        return this.passedList;
-    }
-
     private class Member {
 
         private final DivisionDto storedDivision;
@@ -52,7 +48,7 @@ public final class TreeifiedDivisionDtos implements Serializable {
 
         private List<Member> treeifyList(List<Division> divisionList) {
             return divisionList.stream()
-                    .filter(division -> passedList.contains(division))
+                    .filter(passedList::contains)
                     .map(Member::new)
                     .map(member -> setParent(member, storedDivision))
                     .collect(Collectors.toList());
@@ -75,7 +71,7 @@ public final class TreeifiedDivisionDtos implements Serializable {
             } else {
                 return this.name;
             }
-            return seekResult.equals("") || seekResult.contains("Not found!") ?
+            return (seekResult.equals("") || seekResult.contains("Not found!")) ?
                     "Not found!" : this.name + "/" + seekResult;
         }
     }

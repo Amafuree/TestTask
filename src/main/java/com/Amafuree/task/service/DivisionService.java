@@ -11,7 +11,6 @@ public interface DivisionService {
     Optional<Division> getDivisionById(Long id);
 
     Optional<Division> getDivisionByName(String name);
-    List<Division> getDivisions();
 
     List<Division> getEagerLoadedDivisions();
 
