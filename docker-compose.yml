@@ -1,0 +1,24 @@
+---
+version: '1'
+
+services:
+  my-app:
+    build: .
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/test_task_schema
+      - SPRING_DATASOURCE_PASSWORD=root
+    ports:
+      - 8080:8080
+    restart: on-failure
+  db:
+    image: mysql:8.0.31
+    container_name: mydb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test_task_schema
+
+

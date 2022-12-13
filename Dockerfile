@@ -1,11 +1,12 @@
+
 FROM maven as builder
 
 
 RUN mkdir /test
-COPY . /test
+COPY .. /test
 
 WORKDIR /test
-RUN mvn install
+RUN mvn install #-Dmaven.test.skip=true
 
 FROM openjdk:17
 
